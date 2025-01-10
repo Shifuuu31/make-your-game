@@ -7,7 +7,6 @@ export class Ball {
         this.elem = null;
         this.vectx = 0;
         this.vecty = -4;
-        this.radius = 7;
         this.dimensions = null;
     }
 
