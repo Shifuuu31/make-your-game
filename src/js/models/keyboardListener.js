@@ -10,10 +10,10 @@ const keyboardListener = (game) => {
 
         if ((event.code === 'ArrowLeft' || event.code === 'ArrowRight')) {
             if (overlayHiddenStop) {
-                if(game.isPaused === true){
+                game.paddle.keyDownHandler(event);
+                if (game.isPaused){
                     game.ball.reset(game.paddle.dimensions);
                 }
-                game.paddle.keyDownHandler(event);
             }
         } else if (event.code === 'Space' && game.isPaused) {
             if (overlayShown && gameResultHiddenStop) {

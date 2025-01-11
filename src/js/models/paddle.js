@@ -89,18 +89,4 @@ export class Paddle {
         }
     };
 
-
-
-
-    // listener() {
-    //     document.addEventListener('keydown', (event) => {
-    //         event.preventDefault(); // Uncomment this if you want to prevent default browser behavior
-    //         this.keyDownHandler(event); // Call the `keyDownHandler` method with the event
-    //     });
-    // }
-
-
-    // removeListener() {
-    //     document.removeEventListener('keydown', this.keyDownHandler);
-    // }
 }

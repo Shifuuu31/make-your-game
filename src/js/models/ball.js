@@ -31,8 +31,6 @@ export class Ball {
             right: this.x + this.dimensions.width,
             bottom: this.y + this.dimensions.height,
         });
-        //console.log(this.dimensions);
-
         this.elem = ball;
     }
 
@@ -57,7 +55,6 @@ export class Ball {
 
 
     reset(paddle) {
-
         this.x = paddle.right - (paddle.width / 2) - (this.dimensions.width / 2), this.y = paddle.top - this.dimensions.height;
         this.elem.style.left = `${this.x}px`;
         this.elem.style.top = `${this.y}px`;
