@@ -6,34 +6,33 @@ export class Paddle {
         this.border = window.innerHeight * 0.005;
         this.dimensions = null;
         this.containerDimensions = containerDimensions;
-        this.renderPaddle(containerDimensions, container);
+        this.renderPaddle(container);
     }
 
-    renderPaddle(containerDimensions, container) {
+    renderPaddle(container) {
         const paddle = document.createElement('div');
         paddle.className = "paddle";
         container.append(paddle);
 
         this.dimensions = new dimensions(paddle);
-
-        const newx = (containerDimensions.right - (containerDimensions.width / 2)) - (this.dimensions.width / 2);
-        const newy = (containerDimensions.bottom - this.dimensions.height) - window.innerHeight * 0.01;
-
-        this.dimensions.update({
-            x: newx,
-            y: newy,
-            left: newx,
-            top: newy,
-            right: newx + this.dimensions.width,
-            bottom: newy + this.dimensions.height,
-        });
-
-        paddle.style.left = `${newx}px`;
-        paddle.style.top = `${newy}px`;
-
         this.paddle = paddle;
+
+        this.reset();
+
     }
 
+    reset() {
+        this.dimensions.x = (this.containerDimensions.right - (this.containerDimensions.width / 2)) - (this.dimensions.width / 2);
+        this.dimensions.y = (this.containerDimensions.bottom - this.dimensions.height) - window.innerHeight * 0.01;
+        this.paddle.style.left = `${this.dimensions.x}px`;
+        this.paddle.style.top = `${this.dimensions.y}px`;
+        this.dimensions.update({
+            left: this.dimensions.x,
+            top: this.dimensions.y,
+            right: this.dimensions.x + this.dimensions.width,
+            bottom: this.dimensions.y + this.dimensions.height,
+        });
+    }
 
     moveRight(containerRect) {
         const paddleWidth = this.dimensions.width + this.border;

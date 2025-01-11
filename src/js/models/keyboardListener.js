@@ -32,7 +32,6 @@ const keyboardListener = (game) => {
             overlay.classList.replace("shown", "hiddenStop");
             gameResult.classList.replace("shown", "hiddenStop");
             menuBar.classList.replace("shown", "hiddenStop");
-            game.ball.reset(game.paddle.dimensions);
             start(game);
         }
     });

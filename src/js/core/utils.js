@@ -127,5 +127,7 @@ export function start(game) {
     game.player.score = 0;
     game.bricksContainer.replaceChildren();
     game.player.lives = 3;
+    game.paddle.reset();
+    game.ball.reset(game.paddle.dimensions);
     game.setup();
 }
