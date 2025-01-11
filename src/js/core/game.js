@@ -2,7 +2,7 @@ import { Ball } from "../models/ball.js";
 import { Brick } from "../models/brick.js";
 import { dimensions } from "../models/dimensions.js";
 import { Paddle } from "../models/paddle.js";
-import { levels } from "./utils.js";
+import { levels } from "./levels.js";
 
 export class Game {
     constructor() {
@@ -193,7 +193,7 @@ export class Game {
     }
 
     updateHeader() {
-        this.livesContainer.innerHTML = '';
+        this.livesContainer.innerHTML = ''; 
         for (let i = 0; i < this.player.lives; i++) {
             const life = document.createElement('span');
             life.classList.add('heart');

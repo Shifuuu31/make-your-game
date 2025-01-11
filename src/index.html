@@ -9,15 +9,24 @@
 </head>
 
 <body>
+    <noscript>
+        <h1>Your browser does not support JavaScript</h1>
+      <style>
+        .body {
+            display: none;
+        }
+      </style> 
+    </noscript>
     <!-- <audio src="assets/audio/music.mp3" autoplay loop volume="0.5"></audio> -->
-    <div class="overlay"></div>
+    <div class="body">
+    <div class="overlay hidden"></div>
     <div class="container">
         <div class="header">
-            <div class="lives-container"></div>
-            <div class="score">0</div>
-            <div class="level"></div>
-            <div class="time"></div>
-            <h1 class="menu-button">MENU</h1>
+            <div class="lives-container text"></div>
+            <div class="score text">0</div>
+            <div class="level text"></div>
+            <div class="time text"></div>
+            <div class="menu-button">Press <span style="color: #0095DD; font-weight: bold;">ESC</span> to pause</div>
         </div>
         <div class="game-container">
             <div class="bricks-container"></div>
@@ -26,13 +35,14 @@
     <div id="game-over-dashboard" class="menu-bar" style="display: none;">
         <h1 class="game-over-title">GAME OVER</h1>
         <div class="game-over-score"></div>
-        <a href="/src" class="game-over-restart">Play Again</a>
+        <h1 class="menu-item">to play again press <span style="color: #0095DD; font-weight: bold;">R</span></h1>
     </div>
-    <div id="pause-dashboard" class="menu-bar" style="display: none">
-        <a id="restart" href="/src" class="menu-item">RESTART</a>
-        <button id="continue" class="menu-item">CONTINUE</button>
+    <div id="pause-dashboard" class="menu-bar" style="display: none;">
+        <h1 id="restart" href="/src" class="menu-item">Press <span style="color: #0095DD; font-weight: bold; ">R</span> to restart</h1>
+        <h1 id="continue" class="menu-item">press <span style="color: #0095DD; font-weight: bold;">SPACE</span> to continue</h1>
     </div>
     <script type="module" src="js/core/main.js"></script>
+</div>
 </body>
 
 </html>

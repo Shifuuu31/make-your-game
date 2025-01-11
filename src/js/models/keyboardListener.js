@@ -3,26 +3,29 @@ const keyboardListener = (game) => {
     const pauseDashboard = document.getElementById('pause-dashboard');
     const gameOverDashboard = document.getElementById('game-over-dashboard');
     const menuBar = document.getElementById('pause-dashboard');
+    // overlay.style.display = 'none'
 
     console.log(gameOverDashboard);
 
 
     document.addEventListener('keydown', (event) => {
-        console.log(overlay.style.display == 'none');
-        
-        if ((event.key === 'ArrowLeft' || event.key === 'ArrowRight') && overlay.style.display == 'none') {
+        if ((event.code === 'ArrowLeft' || event.code === 'ArrowRight')) {
+
             console.log("arrow");
-            
-            game.paddle.keyDownHandler(event);
-        }else if (event.code === 'Space' && game.isPaused === true) {
+            console.log(overlay.style.display);
+            if (overlay.classList.contains("hiddenOverlay") || !game.isPaused) {
+                game.paddle.keyDownHandler(event);
+                return;
+            }
+        } else if (event.code === 'Space' && game.isPaused === true) {
             console.log(game.isPaused);
 
             console.log("space");
 
-            if (overlay.style.display === 'block') {
+            if (overlay.classList.contains("shown")) {
                 console.log("block");
-                overlay.style.display = 'none';
-                menuBar.style.display = 'none';
+                overlay.classList.replace("shown", "hiddenOverlay");
+                menuBar.classList.replace("shown", "hiddenOverlay");
                 game.ball.reset(game.paddle.dimensions);
                 return;
             } else {
@@ -34,8 +37,8 @@ const keyboardListener = (game) => {
             console.log("escape");
 
             game.isPaused = true;
-            overlay.style.display = 'block';
-            menuBar.style.display = 'block';
+            overlay.classList.replace("shown", "hiddenOverlay");
+            menuBar.classList.replace("shown", "hiddenOverlay");
         }
     });
 }
