@@ -31,6 +31,7 @@ const keyboardListener = (game) => {
         } else if (event.key === 'r' && overlayShown) {
             overlay.classList.replace("shown", "hiddenStop");
             gameResult.classList.replace("shown", "hiddenStop");
+            menuBar.classList.replace("shown", "hiddenStop");
             game.ball.reset(game.paddle.dimensions);
             start(game);
         }

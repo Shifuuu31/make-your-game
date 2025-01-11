@@ -25,9 +25,6 @@ export function updateBackgroundColor() {
 
 export function adjustStyles() {
     const isPortrait = window.innerWidth <= window.innerHeight;
-    const container = document.querySelector('.container');
-
-    const containerRect = container.getBoundingClientRect();
     const paddleWidth = isPortrait ? '10vw' : '10vh';
     const paddleHeight = isPortrait ? '2vw' : '2vh';
     const ballSize = isPortrait ? '2vw' : '2vh';
@@ -127,6 +124,7 @@ export function start(game) {
     game.timeAccumulator = 0;
     game.isPaused = true;
     game.currentLevel = 0;
+    game.player.score = 0;
     game.bricksContainer.replaceChildren();
     game.player.lives = 3;
     game.setup();

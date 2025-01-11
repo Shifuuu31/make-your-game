@@ -32,8 +32,7 @@ export class Game {
 
     setup() {
         this.updateHeader();
-
-        // return { paddle, ball };
+        this.setupbricks();
     }
 
     setupbricks() {
@@ -186,7 +185,14 @@ export class Game {
     }
 
     updateHeader() {
-        this.livesContainer.textContent = '💙'.repeat(this.player.lives);;
+        this.livesContainer.innerHTML = '';
+        for (let i = 0; i < this.player.lives; i++) {
+            const life = document.createElement('span');
+            life.classList.add('heart');
+            life.textContent = '💙';
+            this.livesContainer.appendChild(life);
+        }
+
         this.time.textContent = `time: ${Math.floor(this.chrono / 60)}:${(this.chrono % 60).toString().padStart(2, '0')}`;
         this.score.textContent = `Score: ${this.player.score}`;
         this.level.textContent = `Level: ${this.currentLevel}`;
