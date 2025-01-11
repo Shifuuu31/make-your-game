@@ -118,5 +118,4 @@ export function adjustStyles() {
     styleElement.innerHTML = css;
 
     document.head.appendChild(styleElement);
-
 }
