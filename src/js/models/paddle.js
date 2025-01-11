@@ -2,8 +2,6 @@ import { dimensions } from "./dimensions.js";
 
 export class Paddle {
     constructor(containerDimensions, container) {
-        this.x = 0;
-        this.y = 0;
         this.paddle = null;
         this.border = window.innerHeight * 0.005;
         this.dimensions = null;
@@ -18,20 +16,20 @@ export class Paddle {
 
         this.dimensions = new dimensions(paddle);
 
-        this.x = (containerDimensions.right - (containerDimensions.width / 2)) - (this.dimensions.width / 2);
-        this.y = (container.getBoundingClientRect().bottom - this.dimensions.height) - window.innerHeight * 0.01;
-
-        paddle.style.left = `${this.x}px`;
-        paddle.style.top = `${this.y}px`;
+        const newx = (containerDimensions.right - (containerDimensions.width / 2)) - (this.dimensions.width / 2);
+        const newy = (containerDimensions.bottom - this.dimensions.height) - window.innerHeight * 0.01;
 
         this.dimensions.update({
-            x: this.x,
-            y: this.y,
-            left: this.x,
-            top: this.y,
-            right: this.x + this.dimensions.width,
-            bottom: this.y + this.dimensions.height,
+            x: newx,
+            y: newy,
+            left: newx,
+            top: newy,
+            right: newx + this.dimensions.width,
+            bottom: newy + this.dimensions.height,
         });
+
+        paddle.style.left = `${newx}px`;
+        paddle.style.top = `${newy}px`;
 
         this.paddle = paddle;
     }
@@ -41,10 +39,10 @@ export class Paddle {
         const paddleWidth = this.dimensions.width + this.border;
         const moveStep = (window.innerWidth * 40) / 2700;
 
-        if (this.x < containerRect.right - paddleWidth) {
-            this.x += moveStep;
+        if (this.dimensions.x < containerRect.right - paddleWidth) {
+            this.dimensions.x += moveStep;
 
-            const newX = Math.min(this.x, containerRect.right - paddleWidth);
+            const newX = Math.min(this.dimensions.x, containerRect.right - paddleWidth);
             this.paddle.style.left = `${newX}px`;
 
             this.dimensions.update({
@@ -60,10 +58,10 @@ export class Paddle {
         const paddleWidth = this.dimensions.width + this.border;
         const moveStep = (window.innerWidth * 40) / 2700;
 
-        if (this.x > containerRect.left) {
-            this.x -= moveStep;
+        if (this.dimensions.x > containerRect.left) {
+            this.dimensions.x -= moveStep;
 
-            const newX = Math.max(this.x, containerRect.left + this.border);
+            const newX = Math.max(this.dimensions.x, containerRect.left + this.border);
             this.paddle.style.left = `${newX}px`;
 
             this.dimensions.update({

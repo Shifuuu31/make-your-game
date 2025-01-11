@@ -1,7 +1,5 @@
 class Brick {
     constructor(container) {
-        this.x = 0;
-        this.y = 0;
         this.type = 1;
         this.elem = null;
         this.container = container;

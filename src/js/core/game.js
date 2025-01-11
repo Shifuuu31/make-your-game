@@ -202,9 +202,11 @@ export class Game {
         this.level.textContent = `Level: ${this.currentLevel}`;
 
     }
+    
     isWin() {
         return this.bricksLive.length === 0;
     }
+
     listenertoreseize() {
         const reloadOnResize = debounce(() => {
             window.location.reload();
