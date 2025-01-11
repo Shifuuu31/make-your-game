@@ -1,6 +1,4 @@
-import { dimensions } from "./dimensions.js";
-
-export class Brick {
+class Brick {
     constructor(container) {
         this.x = 0;
         this.y = 0;
@@ -21,3 +19,5 @@ export class Brick {
     }
 
 }
+
+export { Brick };
