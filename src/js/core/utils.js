@@ -37,12 +37,14 @@ export function adjustStyles() {
             width: ${isPortrait ? '100vw' : '100vh'};
             height: ${isPortrait ? '100vw' : '100vh'};
         }
-    
+
+        .game-container {
+            border: #5ACCE5 dashed ${isPortrait ? '0.5vw' : '0.5vh'};
+        }
+
         .paddle {
             width: ${paddleWidth};
             height: ${paddleHeight};
-            top: ${containerRect.bottom - parseFloat(paddleHeight) * window.innerWidth * 0.02}px;
-            left: ${containerRect.right - containerRect.width / 2 - parseFloat(paddleWidth) / 2}px;
         }
     
         .ball {
@@ -62,13 +64,54 @@ export function adjustStyles() {
             font-size: ${isPortrait ? '3vh' : '2vh'};
         }
 
-        .text{
-            font-size: ${isPortrait ? "3vw" : "3vh"}
+        .text {
+            font-size: ${isPortrait ? "3vw" : "3vh"};
+        }
+        
+        .brick {
+            border: ${isPortrait ? "0.2vw" : "0.2vh"} solid #fff;
+            border-radius: ${isPortrait ? "0.5vw" : "0.5vh"};
+        }
+           
+        .bricks-container {
+            gap: ${isPortrait ? "1vw" : "1vh"};
+        }
+        
+        .menu-button {
+            font-size: ${isPortrait ? "2vw" : "2vh"};
         }
 
-        .bricks-container {
-            gap: ${isPortrait ? "1vw" : "1vh"}
+        .menu-button {
+            font-size: ${isPortrait ? "2vw" : "2vh"};
         }
+        
+        .menu-bar h1 {
+            font-size: ${isPortrait ? "3vw" : "3vh"};
+            margin-bottom: ${isPortrait ? "3vw" : "3vh"};
+        }
+
+        .menu-bar div {
+            font-size: ${isPortrait ? "2vw" : "2vh"};
+            margin: ${isPortrait ? "2vw" : "2vh"} 0;
+            padding: ${isPortrait ? "1vw" : "1vh"};
+            border-radius: ${isPortrait ? "1vw" : "1vh"};
+            border: ${isPortrait ? "0.2vw" : "0.2vh"} solid #e9ecef;
+        }
+
+
+
+        .menu-bar button,
+        .menu-bar a {
+            padding: ${isPortrait ? "1.5vw" : "1.5vh"} ${isPortrait ? "3vw" : "3vh"};
+            font-size: ${isPortrait ? "2vw" : "2vh"};
+        }
+
+        .header {
+            padding: 0 ${isPortrait ? "0.5vw" : "0.5vh"};
+            font-size: ${isPortrait ? "2vw" : "2vh"};
+        }
+
+            
     `;
 
     const styleElement = document.createElement('style');
