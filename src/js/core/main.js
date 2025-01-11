@@ -3,6 +3,7 @@ import { Game } from "./game.js";
 import { keyboardListener } from "../models/keyboardListener.js";
 import { start, updateBackgroundColor } from "./utils.js";
 import { adjustStyles } from "./utils.js";
+import { levels } from "./levels.js";
 
 export function main() {
     adjustStyles();
@@ -26,9 +27,7 @@ export function updateGameState(game) {
         game.collisionWithPaddle();
         game.updateHeader();
         game.updateChrono(Date.now());
-    }
-
-    if (game.isWin()) {
+    } else if (game.isWin()) {
         game.isPaused = true;
         game.stopChrono();
         if (game.currentLevel === levels.length - 1) {
@@ -37,7 +36,7 @@ export function updateGameState(game) {
             winMessage.textContent = 'You Win';
             winMessage.classList.add('win-message');
             document.body.append(winMessage);
-            game.isPaused = true;
+            
         } else {
             game.currentLevel++;
             game.setupbricks();
@@ -45,7 +44,8 @@ export function updateGameState(game) {
             game.updateHeader();
             game.bricksContainer.replaceChildren();
         }
-    } else if (game.player.lives === 0) {
+    }
+    if (game.player.lives === 0) {
         game.gameover();
         game.stopChrono();
     }
