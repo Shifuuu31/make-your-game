@@ -1,44 +1,34 @@
 const keyboardListener = (game) => {
     const overlay = document.querySelector('.overlay');
-    const pauseDashboard = document.getElementById('pause-dashboard');
-    const gameOverDashboard = document.getElementById('game-over-dashboard');
     const menuBar = document.getElementById('pause-dashboard');
-    // overlay.style.display = 'none'
-
-    console.log(gameOverDashboard);
-
+    const gameResult = document.getElementById('game-result-dashboard');
 
     document.addEventListener('keydown', (event) => {
+        const overlayShown = overlay.classList.contains("shown");
+        const overlayHiddenStop = overlay.classList.contains("hiddenStop");
+        const gameResultHiddenStop = gameResult.classList.contains("hiddenStop");
+
         if ((event.code === 'ArrowLeft' || event.code === 'ArrowRight')) {
-
-            console.log("arrow");
-            console.log(overlay.style.display);
-            if (overlay.classList.contains("hiddenOverlay") || !game.isPaused) {
+            if (overlayHiddenStop) {
+                if(game.isPaused === true){
+                    game.ball.reset(game.paddle.dimensions);
+                }
                 game.paddle.keyDownHandler(event);
-                return;
             }
-        } else if (event.code === 'Space' && game.isPaused === true) {
-            console.log(game.isPaused);
-
-            console.log("space");
-
-            if (overlay.classList.contains("shown")) {
-                console.log("block");
-                overlay.classList.replace("shown", "hiddenOverlay");
-                menuBar.classList.replace("shown", "hiddenOverlay");
+        } else if (event.code === 'Space' && game.isPaused) {
+            if (overlayShown && gameResultHiddenStop) {
+                overlay.classList.replace("shown", "hiddenStop");
+                menuBar.classList.replace("shown", "hiddenStop");
                 game.ball.reset(game.paddle.dimensions);
-                return;
             } else {
-                console.log("none");
                 game.isPaused = false;
             }
-
-        } else if (event.key === 'Escape') {
-            console.log("escape");
-
+        } else if (event.key === 'Escape' && gameResultHiddenStop) {
             game.isPaused = true;
-            overlay.classList.replace("shown", "hiddenOverlay");
-            menuBar.classList.replace("shown", "hiddenOverlay");
+            overlay.classList.replace("hiddenStop", "shown");
+            menuBar.classList.replace("hiddenStop", "shown");
+        } else if (event.key === 'r') {
+            console.log("restart")
         }
     });
 }

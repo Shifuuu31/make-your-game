@@ -71,7 +71,7 @@ export function updateGameState(game, timestamp) {
         game.isPaused = true;
         game.stopChrono();
         if (game.currentLevel === levels.length - 1) {
-            game.overlay.style.display = 'block';
+            game.overlay.classList.replace('hiddenStop', 'shown');
             const winMessage = document.createElement("h1");
             winMessage.textContent = 'You Win';
             winMessage.classList.add('win-message');

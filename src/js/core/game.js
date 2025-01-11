@@ -185,11 +185,12 @@ export class Game {
     }
 
     gameover() {
-        let dashbord = document.getElementById('game-over-dashboard');
-        let score = dashbord.querySelector('.game-over-score');
+        this.isPaused = true;
+        let dashbord = document.getElementById('game-result-dashboard');
+        let score = dashbord.querySelector('.game-result-score');
         score.textContent = `Score: ${this.player.score}`;
-        dashbord.style.display = 'block';
-        this.overlay.style.display = 'block';
+        dashbord.classList.replace('hiddenStop', 'shown');
+        this.overlay.classList.replace('hiddenStop', 'shown');
     }
 
     updateHeader() {
