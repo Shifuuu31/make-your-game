@@ -1,3 +1,4 @@
+import { start } from "../core/utils.js";
 const keyboardListener = (game) => {
     const overlay = document.querySelector('.overlay');
     const menuBar = document.getElementById('pause-dashboard');
@@ -11,7 +12,7 @@ const keyboardListener = (game) => {
         if ((event.code === 'ArrowLeft' || event.code === 'ArrowRight')) {
             if (overlayHiddenStop) {
                 game.paddle.keyDownHandler(event);
-                if (game.isPaused){
+                if (game.isPaused) {
                     game.ball.reset(game.paddle.dimensions);
                 }
             }
@@ -27,8 +28,11 @@ const keyboardListener = (game) => {
             game.isPaused = true;
             overlay.classList.replace("hiddenStop", "shown");
             menuBar.classList.replace("hiddenStop", "shown");
-        } else if (event.key === 'r') {
-            console.log("restart")
+        } else if (event.key === 'r' && overlayShown) {
+            overlay.classList.replace("shown", "hiddenStop");
+            gameResult.classList.replace("shown", "hiddenStop");
+            game.ball.reset(game.paddle.dimensions);
+            start(game);
         }
     });
 }

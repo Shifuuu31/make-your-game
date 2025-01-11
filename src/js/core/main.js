@@ -1,7 +1,7 @@
 import { Player } from "../models/player.js";
 import { Game } from "./game.js";
 import { keyboardListener } from "../models/keyboardListener.js";
-import { updateBackgroundColor } from "./utils.js";
+import { start, updateBackgroundColor } from "./utils.js";
 import { adjustStyles } from "./utils.js";
 
 export function main() {
@@ -10,10 +10,9 @@ export function main() {
     const game = new Game();
     player.game = game;
     game.player = player;
-    game.isPaused = true;
-    game.listenertoreseize();
-    game.setup();
+    start(game);
     keyboardListener(game);
+    game.listenertoreseize();
     requestAnimationFrame(() => updateGameState(game));
 }
 

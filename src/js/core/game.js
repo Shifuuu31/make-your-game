@@ -27,16 +27,12 @@ export class Game {
         this.overlay = document.querySelector('.overlay');
         this.paddle = new Paddle(this.gameContainerDimensions, this.gameContainer);
         this.ball = new Ball();
-        // console.log(this.paddle.dimensions.right);
-
-        this.setupbricks();
         this.ball.renderBall(this.paddle.dimensions, this.gameContainer);
     }
 
     setup() {
         this.updateHeader();
-
-        // return { paddle, ball };
+        this.setupbricks();
     }
 
     setupbricks() {
@@ -202,7 +198,7 @@ export class Game {
         this.level.textContent = `Level: ${this.currentLevel}`;
 
     }
-    
+
     isWin() {
         return this.bricksLive.length === 0;
     }
