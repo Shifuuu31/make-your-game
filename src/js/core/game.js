@@ -66,33 +66,27 @@ export class Game {
         const containerRect = this.gameContainerDimensions;
         const ball = this.ball;
         let border = 0.005 * window.innerHeight;
-        let newDx = ball.vectx;
-        let newDy = ball.vecty;
 
-        if (ball.x + ball.dimensions.width >= containerRect.right - border) {
-            newDx = -Math.abs(newDx);
+        if (ball.dimensions.x + ball.dimensions.width >= containerRect.right - border) {
+            ball.vectx = -Math.abs(ball.vectx);
         }
 
-        if (ball.x <= containerRect.left + border) {
-            newDx = Math.abs(newDx);
+        if (ball.dimensions.x <= containerRect.left + border) {
+            ball.vectx = Math.abs(ball.vectx);
         }
 
-        if (ball.y <= containerRect.top + border) {
-            newDy = Math.abs(newDy);
+        if (ball.dimensions.y <= containerRect.top + border) {
+            ball.vecty = Math.abs(ball.vecty);
         }
 
-        if (ball.y + ball.dimensions.width >= containerRect.bottom - border) {
+        if (ball.dimensions.y + ball.dimensions.width >= containerRect.bottom - border) {
             this.player.lives--;
-            ball.elem.remove();
-            this.ball = new Ball;
-            this.ball.renderBall(this.paddle.dimensions, this.gameContainer);
+            this.ball.reset(this.paddle.dimensions);
             this.isPaused = true;
-            return
         }
 
-        ball.move(newDx, newDy);
-        ball.vectx = newDx;
-        ball.vecty = newDy;
+        ball.move();
+
     }
 
     collisionWithPaddle() {
@@ -126,7 +120,7 @@ export class Game {
             const bounceAngle = normalizedHitOffset * maxBounceAngle;
 
             ball.vectx = baseSpeed * Math.sin(bounceAngle);
-            ball.vecty = -baseSpeed * Math.cos(bounceAngle);
+            ball.vecty = -ball.vecty;
 
             if (this.paddle.velocity) {
                 ball.vectx += this.paddle.velocity * 0.2;
@@ -143,7 +137,7 @@ export class Game {
             ball.elem.style.top = (paddleDimensions.top - ballElem.height - 1) + 'px';
         }
 
-        ball.move(ball.vectx, ball.vecty);
+        ball.move();
     }
 
     collisionWithBricks() {
@@ -182,6 +176,7 @@ export class Game {
                 brick.elem.classList.add('hidden');
             }
         });
+        ball.move();
     }
 
     gameover() {
@@ -194,7 +189,7 @@ export class Game {
     }
 
     updateHeader() {
-        this.livesContainer.innerHTML = ''; 
+        this.livesContainer.innerHTML = '';
         for (let i = 0; i < this.player.lives; i++) {
             const life = document.createElement('span');
             life.classList.add('heart');
