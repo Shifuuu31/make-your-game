@@ -119,3 +119,15 @@ export function adjustStyles() {
 
     document.head.appendChild(styleElement);
 }
+
+export function start(game) {
+    game.bricksLive = [];
+    game.chrono = 0;
+    game.lastTime = 0;
+    game.timeAccumulator = 0;
+    game.isPaused = true;
+    game.currentLevel = 0;
+    game.bricksContainer.replaceChildren();
+    game.player.lives = 3;
+    game.setup();
+}
