@@ -4,7 +4,7 @@ export class Ball {
     constructor() {
         this.elem = null;
         this.vectx = 0;
-        this.vecty = 2.5;
+        this.vecty = -2.5;
         this.dimensions = null;
     }
 
@@ -12,11 +12,11 @@ export class Ball {
         const ball = document.createElement('div');
         ball.className = "ball";
         container.append(ball);
-
+        this.vectx = 0;
         this.dimensions = new dimensions(ball);
 
         const newx = paddleDimensions.right - (paddleDimensions.width / 2) - (this.dimensions.width / 2);
-        const newy = paddleDimensions.top - this.dimensions.height -2;
+        const newy = paddleDimensions.top - this.dimensions.height - 2;
 
         this.dimensions.update({
             x: newx,
@@ -51,8 +51,8 @@ export class Ball {
 
     reset(paddle) {
         this.dimensions.x = paddle.right - (paddle.width / 2) - (this.dimensions.width / 2);
-        this.dimensions.y = paddle.top - this.dimensions.height-2;
-        
+        this.dimensions.y = paddle.top - this.dimensions.height - 2;
+
         this.elem.style.left = `${this.dimensions.x}px`;
         this.elem.style.top = `${this.dimensions.y}px`;
         this.vectx = 0;
