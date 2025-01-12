@@ -1,11 +1,5 @@
-@font-face {
-  font-family: 'CustomFont';
-  src: url('/src/assets/fonts/font.ttf') format('truetype');
-}
-
 html {
-    /* cursor: none; */
-    font-family: 'CustomFont', serif;
+    cursor: none;
     font-weight: bold;
 }
 
@@ -77,10 +71,13 @@ span {
     color: #0095DD;
     font-weight: bold;
 }
+
 #title {
     color: #DC2FDD;
     font-weight: bold;
-};
+}
+
+;
 
 body ::before {
     filter: blur(50px);

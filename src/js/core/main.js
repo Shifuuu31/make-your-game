@@ -25,9 +25,6 @@ export function updateGameState(game) {
         game.collisionWithBricks();
         game.collisionswithcontainer();
         game.collisionWithPaddle();
-        // if (!game.isPaused) {
-        //     game.ball.move();
-        // }
         game.updateHeader();
         game.updateChrono(Date.now());
     } else if (game.isWin()) {
@@ -37,9 +34,7 @@ export function updateGameState(game) {
             game.gameResult("YOU WIN!"); 
         } else {
             game.currentLevel++;
-            game.setupbricks();
             game.ball.reset(game.paddle.dimensions);
-            game.updateHeader();
             game.bricksContainer.replaceChildren();
             game.setup();
         }
