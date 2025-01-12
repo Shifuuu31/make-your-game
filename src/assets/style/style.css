@@ -1,15 +1,22 @@
-/* Global Styles */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/src/assets/fonts/font.ttf') format('truetype');
+}
+
+html {
+    /* cursor: none; */
+    font-family: 'CustomFont', serif;
+    font-weight: bold;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
     padding: 0;
-    background: #CCCCCC;
-    color: black;
     height: 100vh;
     width: 100vw;
-    font-family: Arial, sans-serif;
     overflow: hidden;
 }
 
@@ -59,7 +66,7 @@ body {
     width: 100%;
     box-sizing: border-box;
     background-color: black;
-    color: #FFF;
+    color: #888888;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,6 +77,10 @@ span {
     color: #0095DD;
     font-weight: bold;
 }
+#title {
+    color: #DC2FDD;
+    font-weight: bold;
+};
 
 body ::before {
     filter: blur(50px);
@@ -81,33 +92,16 @@ body ::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #CCCCCC;
-    padding: 3vh 0;
-    box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.5);
+    background: black;
     text-align: center;
-    color: #FFF;
-    border: 0.3vh dashed rgb(90, 204, 229);
     z-index: 3;
 }
 
 .menu-bar h1 {
-    color: black;
+    color: #DC2FDD;
     font-size: 3vh;
-    margin-bottom: 2vh;
-    text-transform: uppercase;
     font-weight: bold;
 }
-
-.menu-bar div {
-    font-size: 2vh;
-    margin: 2vh 0;
-    padding: 1vh;
-    border-radius: 1vh;
-    background: #f8f9fa;
-    color: #333;
-    border: 0.2vh solid #e9ecef;
-}
-
 
 
 .menu-bar button,
@@ -138,12 +132,6 @@ body ::before {
     background-size: cover;
     position: absolute;
     border-radius: 50%;
-}
-
-/* Menu */
-.menu-button {
-    color: #0095DD;
-    font-weight: bold;
 }
 
 

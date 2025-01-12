@@ -31,6 +31,8 @@ export function updateGameState(game) {
         game.updateHeader();
         game.updateChrono(Date.now());
     } else if (game.isWin()) {
+        game.topLevel = game.currentLevel >= game.topLevel ? game.currentLevel : game.topLevel;
+        game.isPaused = true;
         if (game.currentLevel === levels.length - 1) {
             game.gameResult("YOU WIN!"); 
         } else {
@@ -39,6 +41,7 @@ export function updateGameState(game) {
             game.ball.reset(game.paddle.dimensions);
             game.updateHeader();
             game.bricksContainer.replaceChildren();
+            game.setup();
         }
     }
     if (game.player.lives === 0) {

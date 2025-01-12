@@ -25,7 +25,6 @@
             <div class="score text">0</div>
             <div class="level text"></div>
             <div class="time text"></div>
-            <div class="menu-button">Press <span>ESC</span> to pause</div>
         </div>
         <div class="game-container">
             <div class="bricks-container"></div>
@@ -33,8 +32,11 @@
     </div>
     <div id="game-result-dashboard" class="menu-bar hiddenStop">
         <h1 class="game-result-message">GAME OVER</h1>
-        <div class="game-result-score"></div>
-        <h1 class="menu-item">to play again press <span>R</span></h1>
+        <p><span id="title">LEVEL: </span><span class="game-result-level"></span></p>
+        <p><span id="title">SCORE: </span><span class="game-result-score"></span></p>
+        <p><span id="title">TOP LEVEL: </span><span  class="game-result-top-level"></span></p>
+        <p><span id="title">TIME: </span><span  class="game-result-time"></span></p>
+        <h1 class="menu-item">PRESS<span> R </span>TO PLAY AGAIN!</h1>
     </div>
     <div id="pause-dashboard" class="menu-bar hiddenStop">
         <h1 id="restart" href="/src" class="menu-item">Press <span>R</span> to restart</h1>

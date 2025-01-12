@@ -30,7 +30,7 @@ export function adjustStyles() {
     const ballSize = isPortrait ? '3vw' : '3vh';
 
     const css = `
-        .container {
+        .container{
             width: ${isPortrait ? '100vw' : '100vh'};
             height: ${isPortrait ? '100vw' : '100vh'};
         }
@@ -54,10 +54,6 @@ export function adjustStyles() {
             height: ${ballSize};
         }
     
-        .menu-bar {
-            padding: ${isPortrait ? '5vh 0' : '3vh 0'};
-        }
-    
         .menu-bar h1 {
             font-size: ${isPortrait ? '5vh' : '3vh'};
         }
@@ -69,6 +65,11 @@ export function adjustStyles() {
         .text {
             font-size: ${isPortrait ? "3vw" : "3vh"};
         }
+
+        .menu-bar {
+            Padding: ${isPortrait ? "3vw" : "3vh"};
+            border: #DC2FDD dashed ${isPortrait ? '0.5vw' : '0.5vh'};
+        }
            
         .menu-button {
             font-size: ${isPortrait ? "2vw" : "2vh"};
@@ -78,25 +79,9 @@ export function adjustStyles() {
             font-size: ${isPortrait ? "2vw" : "2vh"};
         }
         
-        .menu-bar h1 {
+        .menu-bar h1, .menu-bar p{
             font-size: ${isPortrait ? "3vw" : "3vh"};
             margin-bottom: ${isPortrait ? "3vw" : "3vh"};
-        }
-
-        .menu-bar div {
-            font-size: ${isPortrait ? "2vw" : "2vh"};
-            margin: ${isPortrait ? "2vw" : "2vh"} 0;
-            padding: ${isPortrait ? "1vw" : "1vh"};
-            border-radius: ${isPortrait ? "1vw" : "1vh"};
-            border: ${isPortrait ? "0.2vw" : "0.2vh"} solid #e9ecef;
-        }
-
-
-
-        .menu-bar button,
-        .menu-bar a {
-            padding: ${isPortrait ? "1.5vw" : "1.5vh"} ${isPortrait ? "3vw" : "3vh"};
-            font-size: ${isPortrait ? "2vw" : "2vh"};
         }
 
         .header {

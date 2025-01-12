@@ -28,7 +28,7 @@ const keyboardListener = (game) => {
             game.isPaused = true;
             overlay.classList.replace("hiddenStop", "shown");
             menuBar.classList.replace("hiddenStop", "shown");
-        } else if (event.key === 'r' && overlayShown) {
+        } else if ((event.key === 'r' || event.key === 'R') && overlayShown) {
             overlay.classList.replace("shown", "hiddenStop");
             gameResult.classList.replace("shown", "hiddenStop");
             menuBar.classList.replace("shown", "hiddenStop");
