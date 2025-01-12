@@ -86,62 +86,48 @@ export class Game {
     }
 
     collisionWithPaddle() {
-        const ballElem = this.ball.dimensions;
+        const ballDimensions = this.ball.dimensions;
         const ball = this.ball;
         const paddleDimensions = this.paddle.dimensions;
 
-        const ballRadius = ballElem.width / 2;
+        const ballRadius = ballDimensions.width / 2;
 
-        const ballCenterX = ballElem.left + ballRadius;
-        const ballCenterY = ballElem.top + ballRadius;
+        const ballCenterX = ballDimensions.left + ballRadius;
 
-        const ballLeft = ballCenterX - ballRadius;
-        const ballRight = ballCenterX + ballRadius;
-        const ballTop = ballCenterY - ballRadius;
-        const ballBottom = ballCenterY + ballRadius;
 
-        if (ballRight >= paddleDimensions.left &&
-            ballLeft <= paddleDimensions.right &&
-            ballBottom >= paddleDimensions.top &&
-            ballTop <= paddleDimensions.bottom) {
+        if (ballDimensions.right >= paddleDimensions.left &&
+            ballDimensions.left <= paddleDimensions.right &&
+            ballDimensions.bottom >= paddleDimensions.top &&
+            ballDimensions.top <= paddleDimensions.bottom) {
 
-            const paddleWidth = paddleDimensions.right - paddleDimensions.left;
-            const paddleCenter = paddleDimensions.left + (paddleWidth / 2);
+            const paddleCenter = paddleDimensions.left + (paddleDimensions.width / 2);
             const hitOffset = ballCenterX - paddleCenter;
-            const normalizedHitOffset = hitOffset / (paddleWidth / 2);
+            const normalizedHitOffset = hitOffset / (paddleDimensions.width / 2);
 
-            const baseSpeed = Math.sqrt(ball.vectx * ball.vectx + ball.vecty * ball.vecty);
+            const hypotenuse = Math.sqrt(ball.vectx * ball.vectx + ball.vecty * ball.vecty);
             const maxBounceAngle = Math.PI / 3;
 
             const bounceAngle = normalizedHitOffset * maxBounceAngle;
 
-            ball.vectx = baseSpeed * Math.sin(bounceAngle);
+             if (bounceAngle == 0) {
+                const variation = (Math.random() - 0.5) * 0.2;
+                ball.vectx += variation;
+            }
+
+
+            ball.vectx = hypotenuse * Math.sin(bounceAngle);
             ball.vecty = -ball.vecty;
-
-            if (this.paddle.velocity) {
-                ball.vectx += this.paddle.velocity * 0.2;
-            }
-
-            const variation = (Math.random() - 0.5) * 0.2;
-            ball.vectx += variation;
-
-            const minVerticalSpeed = baseSpeed * 0.5;
-            if (Math.abs(ball.vecty) < minVerticalSpeed) {
-                ball.vecty = ball.vecty > 0 ? minVerticalSpeed : -minVerticalSpeed;
-            }
-
-            ball.elem.style.top = (paddleDimensions.top - ballElem.height - 1) + 'px';
         }
-
         ball.move();
+
     }
 
     collisionWithBricks() {
-        const ballElem = this.ball.dimensions;
+        const ballDimensions = this.ball.dimensions;
         const ball = this.ball;
-        const ballRadius = ballElem.width / 2;
-        const ballCenterX = ballElem.left + ballRadius;
-        const ballCenterY = ballElem.top + ballRadius;
+        const ballRadius = ballDimensions.width / 2;
+        const ballCenterX = ballDimensions.left + ballRadius;
+        const ballCenterY = ballDimensions.top + ballRadius;
 
         this.bricksLive.forEach((brick, index) => {
             const brickRect = brick.dimension;
@@ -175,10 +161,13 @@ export class Game {
         ball.move();
     }
 
-    gameover() {
+    gameResult(resultMessage) {
         this.isPaused = true;
+        this.stopChrono();
         let dashbord = document.getElementById('game-result-dashboard');
         let score = dashbord.querySelector('.game-result-score');
+        let resultMessageElem = dashbord.querySelector('.game-result-message');
+        resultMessageElem.textContent = resultMessage;
         score.textContent = `Score: ${this.player.score}`;
         dashbord.classList.replace('hiddenStop', 'shown');
         this.overlay.classList.replace('hiddenStop', 'shown');

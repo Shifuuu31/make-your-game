@@ -25,18 +25,14 @@ export function updateGameState(game) {
         game.collisionWithBricks();
         game.collisionswithcontainer();
         game.collisionWithPaddle();
+        // if (!game.isPaused) {
+        //     game.ball.move();
+        // }
         game.updateHeader();
         game.updateChrono(Date.now());
     } else if (game.isWin()) {
-        game.isPaused = true;
-        game.stopChrono();
         if (game.currentLevel === levels.length - 1) {
-            game.overlay.classList.replace('hiddenStop', 'shown');
-            const winMessage = document.createElement("h1");
-            winMessage.textContent = 'You Win';
-            winMessage.classList.add('win-message');
-            document.body.append(winMessage);
-            
+            game.gameResult("YOU WIN!"); 
         } else {
             game.currentLevel++;
             game.setupbricks();
@@ -46,8 +42,7 @@ export function updateGameState(game) {
         }
     }
     if (game.player.lives === 0) {
-        game.gameover();
-        game.stopChrono();
+        game.gameResult("YOU LOSE!");
     }
 
     requestAnimationFrame((timestamp) => updateGameState(game, timestamp));
