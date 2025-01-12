@@ -35,11 +35,11 @@ body {
 }
 
 .bricks-container {
-    height: 30%;
-    width: 100%;
+    height: 37%;
+    width: 99%;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     align-items: center;
     justify-items: center;
 }
@@ -48,7 +48,8 @@ body {
 .brick {
     width: 100%;
     height: 100%;
-    background-color: #0055FF;
+    background-image: url(/assets/images/brick.png);
+    background-size: cover;
     display: inline-block;
 }
 
@@ -66,10 +67,11 @@ body {
 }
 
 span {
-    color: #0095DD; font-weight: bold;
+    color: #0095DD;
+    font-weight: bold;
 }
 
-body ::before{
+body ::before {
     filter: blur(50px);
     z-index: -1;
 }
@@ -122,7 +124,8 @@ body ::before{
 
 /* Paddle */
 .paddle {
-    background-color: #58FA83;
+    background-image: url(/assets/images/paddle.png);
+    background-size: cover;
     position: absolute;
     margin: 0;
     padding: 0;
@@ -131,7 +134,8 @@ body ::before{
 
 /* Ball */
 .ball {
-    background-color: #0095DD;
+    background-image: url(/assets/images/ball.png);
+    background-size: cover;
     position: absolute;
     border-radius: 50%;
 }
@@ -144,7 +148,7 @@ body ::before{
 
 
 .overlay {
-/* display: none; */
+    /* display: none; */
     position: fixed;
     top: 0;
     left: 0;
@@ -158,6 +162,6 @@ body ::before{
     display: none;
 }
 
-.shown{
+.shown {
     display: block;
 }

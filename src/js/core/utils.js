@@ -1,6 +1,6 @@
-const startColor = [0, 50, 150];
-const endColor = [90, 204, 229];
-const rgbIncrement = 0.5;
+const startColor = [20, 0, 40];
+const endColor = [90, 37, 98];
+const rgbIncrement = 0.1;
 let fact = 1;
 let color = [...startColor];
 
@@ -25,9 +25,9 @@ export function updateBackgroundColor() {
 
 export function adjustStyles() {
     const isPortrait = window.innerWidth <= window.innerHeight;
-    const paddleWidth = isPortrait ? '10vw' : '10vh';
-    const paddleHeight = isPortrait ? '2vw' : '2vh';
-    const ballSize = isPortrait ? '2vw' : '2vh';
+    const paddleWidth = isPortrait ? '15vw' : '15vh';
+    const paddleHeight = isPortrait ? '3vw' : '3vh';
+    const ballSize = isPortrait ? '3vw' : '3vh';
 
     const css = `
         .container {
@@ -36,7 +36,12 @@ export function adjustStyles() {
         }
 
         .game-container {
-            border: #5ACCE5 dashed ${isPortrait ? '0.5vw' : '0.5vh'};
+            border: #DC2FDD dashed ${isPortrait ? '0.5vw' : '0.5vh'};
+        }
+
+        .bricks-container {
+            margin: ${isPortrait ? '0.5vw' : '0.5vh'};
+            
         }
 
         .paddle {
@@ -64,16 +69,7 @@ export function adjustStyles() {
         .text {
             font-size: ${isPortrait ? "3vw" : "3vh"};
         }
-        
-        .brick {
-            border: ${isPortrait ? "0.2vw" : "0.2vh"} solid #fff;
-            border-radius: ${isPortrait ? "0.5vw" : "0.5vh"};
-        }
            
-        .bricks-container {
-            gap: ${isPortrait ? "1vw" : "1vh"};
-        }
-        
         .menu-button {
             font-size: ${isPortrait ? "2vw" : "2vh"};
         }

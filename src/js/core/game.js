@@ -109,7 +109,7 @@ export class Game {
 
             const bounceAngle = normalizedHitOffset * maxBounceAngle;
 
-             if (bounceAngle == 0) {
+            if (bounceAngle == 0) {
                 const variation = (Math.random() - 0.5) * 0.2;
                 ball.vectx += variation;
             }
@@ -123,25 +123,20 @@ export class Game {
     }
 
     collisionWithBricks() {
-        const ballDimensions = this.ball.dimensions;
         const ball = this.ball;
-        const ballRadius = ballDimensions.width / 2;
-        const ballCenterX = ballDimensions.left + ballRadius;
-        const ballCenterY = ballDimensions.top + ballRadius;
-
         this.bricksLive.forEach((brick, index) => {
             const brickRect = brick.dimension;
             if (
-                ballCenterX + ballRadius >= brickRect.left &&
-                ballCenterX - ballRadius <= brickRect.right &&
-                ballCenterY + ballRadius >= brickRect.top &&
-                ballCenterY - ballRadius <= brickRect.bottom
+                ball.dimensions.right >= brickRect.left &&
+                ball.dimensions.left <= brickRect.right &&
+                ball.dimensions.bottom >= brickRect.top &&
+                ball.dimensions.top <= brickRect.bottom
             ) {
                 this.player.score += 10;
-                const overlapLeft = Math.abs(ballCenterX + ballRadius - brickRect.left);
-                const overlapRight = Math.abs(ballCenterX - ballRadius - brickRect.right);
-                const overlapTop = Math.abs(ballCenterY + ballRadius - brickRect.top);
-                const overlapBottom = Math.abs(ballCenterY - ballRadius - brickRect.bottom);
+                const overlapLeft = Math.abs(ball.dimensions.right - brickRect.left);
+                const overlapRight = Math.abs(ball.dimensions.left - brickRect.right);
+                const overlapTop = Math.abs(ball.dimensions.bottom - brickRect.top);
+                const overlapBottom = Math.abs(ball.dimensions.top - brickRect.bottom);
                 const minOverlap = Math.min(overlapLeft, overlapRight, overlapTop, overlapBottom);
 
                 if (minOverlap === overlapTop) {
