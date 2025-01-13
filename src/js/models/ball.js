@@ -1,10 +1,10 @@
 import { dimensions } from "/src/js/models/dimensions.js";
 
 export class Ball {
-    constructor() {
+    constructor(isPortrait) {
         this.elem = null;
         this.vectx = 0;
-        this.vecty = -(window.innerWidth * 3.5) / 2700;
+        this.vecty = isPortrait ? -window.innerWidth * 0.004 : -window.innerHeight * 0.004;
         this.dimensions = null;
     }
 

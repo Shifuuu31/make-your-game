@@ -5,9 +5,9 @@ import { start, updateBackgroundColor, adjustStyles } from "/src/js/core/utils.j
 import { levels } from "/src/js/core/levels.js";
 
 export function main() {
-    adjustStyles();
+    const isPortrait = adjustStyles();
     const player = new Player();
-    const game = new Game();
+    const game = new Game(isPortrait);
     game.player = player;
     start(game);
     keyboardListener(game);

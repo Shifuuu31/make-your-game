@@ -5,7 +5,7 @@ import { Paddle } from "/src/js/models/paddle.js";
 import { levels } from "/src/js/core/levels.js";
 
 export class Game {
-    constructor() {
+    constructor(isPortrait) {
         this.chrono = 0;
         this.lastTime = 0;
         this.timeAccumulator = 0;
@@ -25,8 +25,8 @@ export class Game {
         this.containerdimension = new dimensions(this.gameContainer);
         this.bricksContainer = document.querySelector('.bricks-container');
         this.overlay = document.querySelector('.overlay');
-        this.paddle = new Paddle(this.gameContainerDimensions, this.gameContainer);
-        this.ball = new Ball();
+        this.paddle = new Paddle(isPortrait, this.gameContainerDimensions, this.gameContainer);
+        this.ball = new Ball(isPortrait);
         this.ball.renderBall(this.paddle.dimensions, this.gameContainer);
     }
 

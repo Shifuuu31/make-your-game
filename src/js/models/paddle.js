@@ -1,9 +1,9 @@
 import { dimensions } from "/src/js/models/dimensions.js";
 
 export class Paddle {
-    constructor(containerDimensions, container) {
+    constructor(isPortrait, containerDimensions, container) {
         this.paddle = null;
-        this.moveStep = (window.innerWidth * 40) / 2700;
+        this.moveStep = isPortrait ? window.innerWidth * 0.03 : window.innerHeight * 0.03;
         this.border = window.innerHeight * 0.005;
         this.dimensions = null;
         this.containerDimensions = containerDimensions;

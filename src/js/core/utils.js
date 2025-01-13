@@ -96,6 +96,7 @@ export function adjustStyles() {
     styleElement.innerHTML = css;
 
     document.head.appendChild(styleElement);
+    return isPortrait;
 }
 
 export function start(game) {
