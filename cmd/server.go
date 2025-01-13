@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"strings"
+	"text/template"
 )
 
 func main() {
@@ -12,27 +14,36 @@ func main() {
 
 	http.HandleFunc("/src/", func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasSuffix(r.URL.Path, "/") {
-			w.WriteHeader(http.StatusNotFound)
-			w.Write([]byte("page not found"))
+			RespondWithError(w, "Page Not Found", http.StatusNotFound)
 			return
 		}
-		http.FileServer(http.Dir("../")).ServeHTTP(w, r)
+		http.FileServer(http.Dir(".")).ServeHTTP(w, r)
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
-			w.WriteHeader(http.StatusNotFound)
-			w.Write([]byte("page not found"))
+			RespondWithError(w, "Page Not Found", http.StatusNotFound)
 			return
 		}
-		html, err := os.ReadFile("../src/index.html")
+		html, err := os.ReadFile("./src/html/index.html")
 		if err != nil {
 			fmt.Fprintln(os.Stderr, err)
-			w.WriteHeader(http.StatusInternalServerError)
-			w.Write([]byte("Internal Server Error"))
+			RespondWithError(w, "Internal Server Error", http.StatusNotFound)
 			return
 		}
 		w.Write(html)
 	})
-	http.ListenAndServe(":8080", nil)
+	log.Fatalln(http.ListenAndServe(":8080", nil))
+}
+
+func RespondWithError(w http.ResponseWriter, data string, status int) {
+	tmpl, err := template.ParseFiles("./src/html/error.html")
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte("Inernal Server Error"))
+		return
+	}
+	w.WriteHeader(status)
+	tmpl.Execute(w, data)
 }
