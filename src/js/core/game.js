@@ -186,15 +186,7 @@ export class Game {
         return this.bricksLive.length === 0;
     }
 
-    listenertoreseize() {
-        const reloadOnResize = debounce(() => {
-            window.location.reload();
-        }, 200);
-
-        window.addEventListener('resize', (event) => {
-            reloadOnResize();
-        });
-    }
+   
 
     updateChrono(currentTime) {
         if (!this.lastTime) {
@@ -212,18 +204,10 @@ export class Game {
 
         this.lastTime = currentTime;
     }
+    
     stopChrono() {
         this.lastTime = null;
         this.timeAccumulator = 0;
     }
 }
 
-function debounce(func, delay) {
-    let timeout;
-    return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            func(...args);
-        }, delay);
-    };
-}

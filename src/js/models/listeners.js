@@ -1,4 +1,7 @@
-import { start } from "/src/js/core/utils.js";
+import { start, debounce } from "/src/js/core/utils.js";
+
+
+
 const keyboardListener = (game) => {
     const overlay = document.querySelector('.overlay');
     const menuBar = document.getElementById('pause-dashboard');
@@ -41,4 +44,20 @@ const keyboardListener = (game) => {
     });
 }
 
-export { keyboardListener }
+function listenertoreseize() {
+    const reloadOnResize = debounce(() => {
+        window.location.reload();
+    }, 200);
+
+    window.addEventListener('resize', (event) => {
+        reloadOnResize();
+    });
+}
+
+
+function setupListeners(game) {
+    keyboardListener(game);
+    listenertoreseize();
+}
+
+export {setupListeners};

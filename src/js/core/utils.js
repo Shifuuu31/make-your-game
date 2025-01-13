@@ -120,3 +120,15 @@ export function start(game) {
     game.ball.reset(game.paddle.dimensions);
     game.setup();
 }
+
+
+export function debounce(func, delay) {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func(...args);
+        }, delay);
+    };
+}
+

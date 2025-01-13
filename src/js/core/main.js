@@ -1,6 +1,6 @@
 import { Player } from "/src/js/models/player.js";
 import { Game } from "/src/js/core/game.js";
-import { keyboardListener } from "/src/js/models/keyboardListener.js";
+import { setupListeners } from "/src/js/models/listeners.js";
 import { start, updateBackgroundColor, adjustStyles } from "/src/js/core/utils.js";
 import { levels } from "/src/js/core/levels.js";
 
@@ -10,8 +10,7 @@ export function main() {
     const game = new Game(isPortrait);
     game.player = player;
     start(game);
-    keyboardListener(game);
-    game.listenertoreseize();
+    setupListeners(game);
     requestAnimationFrame(() => updateGameState(game));
 }
 
