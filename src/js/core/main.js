@@ -11,12 +11,12 @@ export function main() {
     game.player = player;
     start(game);
     setupListeners(game);
-    requestAnimationFrame(() => updateGameState(game));
+    requestAnimationFrame(updateGameState.bind(null, game));
 }
 
 export function updateGameState(game) {
-    updateBackgroundColor();
     if (game.isPaused) {
+        updateBackgroundColor();
         game.stopChrono();
     } else if (!game.isPaused && game.player.lives > 0 && !game.isWin()) {
         game.collisionWithBricks();
@@ -40,7 +40,7 @@ export function updateGameState(game) {
         game.gameResult("YOU LOSE!");
     }
 
-    requestAnimationFrame((timestamp) => updateGameState(game, timestamp));
+    requestAnimationFrame(updateGameState.bind(null, game));
 }
 
 main();
