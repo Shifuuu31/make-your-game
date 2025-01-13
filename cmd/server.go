@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	fmt.Println("started server")
+	fmt.Println("Starting server at http://localhost:8080")
 
 	http.HandleFunc("/src/", func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasSuffix(r.URL.Path, "/") {
