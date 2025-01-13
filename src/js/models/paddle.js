@@ -15,12 +15,10 @@ export class Paddle {
         paddle.className = "paddle";
         container.append(paddle);
 
-
         this.dimensions = new dimensions(paddle);
         this.paddle = paddle;
 
         this.reset();
-
     }
 
     reset() {
@@ -53,7 +51,6 @@ export class Paddle {
         }
     }
 
-
     moveLeft(containerRect) {
         const paddleWidth = this.dimensions.width + this.border;
 
@@ -71,8 +68,6 @@ export class Paddle {
         }
     }
 
-
-
     keyDownHandler = (event) => {
         switch (event.key) {
             case "ArrowLeft":
@@ -83,5 +78,4 @@ export class Paddle {
                 break;
         }
     };
-
 }

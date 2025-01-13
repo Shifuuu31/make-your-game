@@ -15,7 +15,6 @@ class Brick {
         this.elem = brick;
         return brick
     }
-
 }
 
 export { Brick };

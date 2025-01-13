@@ -28,7 +28,7 @@ export function updateGameState(game) {
         game.player.topLevel = game.currentLevel > game.player.topLevel ? game.currentLevel : game.player.topLevel;
         game.isPaused = true;
         if (game.currentLevel === levels.length - 1) {
-            game.gameResult("YOU WIN!"); 
+            game.gameResult("YOU WIN!");
         } else {
             game.currentLevel++;
             game.ball.reset(game.paddle.dimensions);

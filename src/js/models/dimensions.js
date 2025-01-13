@@ -1,5 +1,5 @@
 class dimensions {
-    constructor(element){
+    constructor(element) {
         let rect = element.getBoundingClientRect();
         this.x = rect.x;
         this.y = rect.y;
@@ -19,6 +19,4 @@ class dimensions {
     }
 }
 
-
-
-export {dimensions}
+export { dimensions }

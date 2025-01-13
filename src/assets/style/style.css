@@ -43,7 +43,9 @@ body {
     justify-items: center;
 }
 
-.brick, .paddle, .ball {
+.brick,
+.paddle,
+.ball {
     background-size: cover;
 }
 
@@ -67,7 +69,9 @@ body {
     border-radius: 50%;
 }
 
-.header, .menu-bar, .instructions {
+.header,
+.menu-bar,
+.instructions {
     background: black;
     text-align: center;
     z-index: 3;
@@ -84,7 +88,8 @@ body {
     z-index: 1;
 }
 
-span, #title {
+span,
+#title {
     font-weight: bold;
 }
 
@@ -103,13 +108,15 @@ span {
     transform: translate(-50%, -50%);
 }
 
-.menu-bar h1, .instructions h1 {
+.menu-bar h1,
+.instructions h1 {
     color: #DC2FDD;
     font-size: 3vh;
     font-weight: bold;
 }
 
-.menu-bar button, .menu-bar a {
+.menu-bar button,
+.menu-bar a {
     display: inline-block;
     padding: 1.5vh 3vw;
     background: #5ACCE5;

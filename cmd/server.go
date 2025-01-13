@@ -10,8 +10,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Starting server at http://localhost:8080")
-
 	http.HandleFunc("/src/", func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasSuffix(r.URL.Path, "/") {
 			RespondWithError(w, "Page Not Found", http.StatusNotFound)
@@ -33,6 +31,8 @@ func main() {
 		}
 		w.Write(html)
 	})
+
+	fmt.Println("Starting server at http://localhost:8080")
 	log.Fatalln(http.ListenAndServe(":8080", nil))
 }
 

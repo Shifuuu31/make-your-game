@@ -7,53 +7,53 @@
     <link rel="stylesheet" href="/src/assets/style/style.css">
     <link rel="icon" href="/src/assets/images/ball.png">
     <title>Arkanoid</title>
-    
+
 </head>
 
 <body>
     <noscript>
         <h1>Your browser does not support JavaScript</h1>
-      <style>
-        .body {
-            display: none;
-        }
-      </style> 
+        <style>
+            .body {
+                display: none;
+            }
+        </style>
     </noscript>
     <div class="body">
-    <div class="overlay shown"></div>
-    <div class="instructions shown">
-        <h1>INSTRUCTIONS</h1>
-        <p>Use the <span>left</span> and <span>right</span> arrow keys to move the paddle.</p>
-        <p>Press the <span>P</span> key to start the game.</p>
-        <p>Press the <span>space bar</span> to continue the game.</p>
-        <p>Press the <span>escape</span> key to pause the game and show the menu.</p>
-        <p>Press the <span>R</span> key to restart the game (inside the menu).</p>
-    </div>
-    <div class="container">
-        <div class="header">
-            <div class="lives-container text"></div>
-            <div class="score text">0</div>
-            <div class="level text"></div>
-            <div class="time text"></div>
+        <div class="overlay shown"></div>
+        <div class="instructions shown">
+            <h1>INSTRUCTIONS</h1>
+            <p>Use the <span>left</span> and <span>right</span> arrow keys to move the paddle.</p>
+            <p>Press the <span>P</span> key to start the game.</p>
+            <p>Press the <span>space bar</span> to continue the game.</p>
+            <p>Press the <span>escape</span> key to pause the game and show the menu.</p>
+            <p>Press the <span>R</span> key to restart the game (inside the menu).</p>
         </div>
-        <div class="game-container">
-            <div class="bricks-container"></div>
+        <div class="container">
+            <div class="header">
+                <div class="lives-container text"></div>
+                <div class="score text">0</div>
+                <div class="level text"></div>
+                <div class="time text"></div>
+            </div>
+            <div class="game-container">
+                <div class="bricks-container"></div>
+            </div>
         </div>
+        <div id="game-result-dashboard" class="menu-bar hiddenStop">
+            <h1 class="game-result-message">GAME OVER</h1>
+            <p><span id="title">LEVEL: </span><span class="game-result-level"></span></p>
+            <p><span id="title">SCORE: </span><span class="game-result-score"></span></p>
+            <p><span id="title">TOP LEVEL: </span><span class="game-result-top-level"></span></p>
+            <p><span id="title">TIME: </span><span class="game-result-time"></span></p>
+            <h1 class="menu-item">PRESS<span> R </span>TO PLAY AGAIN!</h1>
+        </div>
+        <div id="pause-dashboard" class="menu-bar hiddenStop">
+            <h1 id="restart" href="/src" class="menu-item">Press <span>R</span> to restart</h1>
+            <h1 id="continue" class="menu-item">press <span>SPACE</span> to continue</h1>
+        </div>
+        <script type="module" src="/src/js/core/main.js"></script>
     </div>
-    <div id="game-result-dashboard" class="menu-bar hiddenStop">
-        <h1 class="game-result-message">GAME OVER</h1>
-        <p><span id="title">LEVEL: </span><span class="game-result-level"></span></p>
-        <p><span id="title">SCORE: </span><span class="game-result-score"></span></p>
-        <p><span id="title">TOP LEVEL: </span><span  class="game-result-top-level"></span></p>
-        <p><span id="title">TIME: </span><span  class="game-result-time"></span></p>
-        <h1 class="menu-item">PRESS<span> R </span>TO PLAY AGAIN!</h1>
-    </div>
-    <div id="pause-dashboard" class="menu-bar hiddenStop">
-        <h1 id="restart" href="/src" class="menu-item">Press <span>R</span> to restart</h1>
-        <h1 id="continue" class="menu-item">press <span>SPACE</span> to continue</h1>
-    </div>
-    <script type="module" src="/src/js/core/main.js"></script>
-</div>
 </body>
 
 </html>

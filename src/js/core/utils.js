@@ -4,7 +4,6 @@ const rgbIncrement = 0.1;
 let fact = 1;
 let color = [...startColor];
 
-
 export function updateBackgroundColor() {
     for (let i = 0; i < 3; i++) {
         color[i] += rgbIncrement * fact;
@@ -20,7 +19,6 @@ export function updateBackgroundColor() {
     );
 
     document.body.style.background = `var(--dynamic-gradient)`;
-
 }
 
 export function adjustStyles() {
@@ -120,7 +118,6 @@ export function start(game) {
     game.ball.reset(game.paddle.dimensions);
     game.setup();
 }
-
 
 export function debounce(func, delay) {
     let timeout;

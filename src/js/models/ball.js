@@ -33,8 +33,6 @@ export class Ball {
         this.elem = ball;
     }
 
-
-
     move() {
         this.dimensions.update({
             x: this.dimensions.x + this.vectx,
@@ -47,7 +45,6 @@ export class Ball {
         this.elem.style.left = `${this.dimensions.x}px`;
         this.elem.style.top = `${this.dimensions.y}px`;
     }
-
 
     reset(paddle) {
         this.dimensions.x = paddle.right - (paddle.width / 2) - (this.dimensions.width / 2);
@@ -63,5 +60,4 @@ export class Ball {
             bottom: this.dimensions.y + this.dimensions.height,
         });
     }
-
 }

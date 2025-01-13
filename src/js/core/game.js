@@ -4,7 +4,7 @@ import { dimensions } from "/src/js/models/dimensions.js";
 import { Paddle } from "/src/js/models/paddle.js";
 import { levels } from "/src/js/core/levels.js";
 
-export class Game  {
+export class Game {
     constructor(isPortrait) {
         this.chrono = 0;
         this.lastTime = 0;
@@ -82,7 +82,6 @@ export class Game  {
         }
 
         ball.move();
-
     }
 
     collisionWithPaddle() {
@@ -108,19 +107,15 @@ export class Game  {
             const maxAngle = Math.PI / 3;
 
             const bounceAngle = normalizedHitOffset * maxAngle;
-                
-           
-
 
             ball.vectx = hypotenuse * Math.sin(bounceAngle);
             ball.vecty = -ball.vecty;
             if (bounceAngle == 0) {
-                const variation = Math.random()-0.7;
-                ball.vectx +=  variation;
+                const variation = Math.random() - 0.7;
+                ball.vectx += variation;
             }
         }
         ball.move();
-
     }
 
     collisionWithBricks() {
@@ -180,14 +175,11 @@ export class Game  {
         this.time.textContent = `TIME: ${Math.floor(this.chrono / 60).toString().padStart(2, '0')}:${(this.chrono % 60).toString().padStart(2, '0')}`;
         this.score.textContent = `SCORE: ${this.player.score}`;
         this.level.textContent = `LEVEL: ${this.currentLevel + 1}`;
-
     }
 
     isWin() {
         return this.bricksLive.length === 0;
     }
-
-
 
     updateChrono(currentTime) {
         if (!this.lastTime) {

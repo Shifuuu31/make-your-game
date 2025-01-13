@@ -1,7 +1,5 @@
 import { start, debounce } from "/src/js/core/utils.js";
 
-
-
 const keyboardListener = (game) => {
     const overlay = document.querySelector('.overlay');
     const menuBar = document.getElementById('pause-dashboard');
@@ -55,10 +53,9 @@ function listenertoreseize() {
     });
 }
 
-
 function setupListeners(game) {
     keyboardListener(game);
     listenertoreseize();
 }
 
-export {setupListeners};
+export { setupListeners };
