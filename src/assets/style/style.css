@@ -27,8 +27,6 @@ body {
     width: 100%;
     height: 90%;
     background-color: black;
-    padding: 0;
-    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -45,21 +43,40 @@ body {
     justify-items: center;
 }
 
+.brick, .paddle, .ball {
+    background-size: cover;
+}
 
 .brick {
     width: 100%;
     height: 100%;
     background-image: url(/src/assets/images/brick.png);
-    background-size: cover;
     display: inline-block;
 }
 
+.paddle {
+    background-image: url(/src/assets/images/paddle.png);
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+
+.ball {
+    background-image: url(/src/assets/images/ball.png);
+    position: absolute;
+    border-radius: 50%;
+}
+
+.header, .menu-bar, .instructions {
+    background: black;
+    text-align: center;
+    z-index: 3;
+}
 
 .header {
     height: 10%;
     width: 100%;
     box-sizing: border-box;
-    background-color: black;
     color: #888888;
     display: flex;
     justify-content: space-between;
@@ -67,21 +84,16 @@ body {
     z-index: 1;
 }
 
+span, #title {
+    font-weight: bold;
+}
+
 span {
     color: #0095DD;
-    font-weight: bold;
 }
 
 #title {
     color: #DC2FDD;
-    font-weight: bold;
-}
-
-;
-
-body ::before {
-    filter: blur(50px);
-    z-index: -1;
 }
 
 .menu-bar {
@@ -89,20 +101,15 @@ body ::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: black;
-    text-align: center;
-    z-index: 3;
 }
 
-.menu-bar h1 {
+.menu-bar h1, .instructions h1 {
     color: #DC2FDD;
     font-size: 3vh;
     font-weight: bold;
 }
 
-
-.menu-bar button,
-.menu-bar a {
+.menu-bar button, .menu-bar a {
     display: inline-block;
     padding: 1.5vh 3vw;
     background: #5ACCE5;
@@ -113,27 +120,19 @@ body ::before {
     cursor: pointer;
 }
 
-/* Paddle */
-.paddle {
-    background-image: url(/src/assets/images/paddle.png);
-    background-size: cover;
+.instructions {
     position: absolute;
-    margin: 0;
-    padding: 0;
-    /* transition:  0.02s ease-in; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* Ball */
-.ball {
-    background-image: url(/src/assets/images/ball.png);
-    background-size: cover;
-    position: absolute;
-    border-radius: 50%;
+.instructions p {
+    color: #888888;
+    font-weight: bold;
 }
-
 
 .overlay {
-    /* display: none; */
     position: fixed;
     top: 0;
     left: 0;
@@ -151,22 +150,7 @@ body ::before {
     display: block;
 }
 
-.instructions {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: black;
-    text-align: center;
-    z-index: 3;
-}
-
-.instructions h1 {
-    color: #DC2FDD;
-    font-weight: bold;
-}
-
-.instructions p {
-    color: #888888;
-    font-weight: bold;
+body::before {
+    filter: blur(50px);
+    z-index: -1;
 }
