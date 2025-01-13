@@ -28,68 +28,75 @@ export function adjustStyles() {
     const paddleWidth = isPortrait ? '15vw' : '15vh';
     const paddleHeight = isPortrait ? '3vw' : '3vh';
     const ballSize = isPortrait ? '3vw' : '3vh';
+    const borderWidth = isPortrait ? '0.5vw' : '0.5vh';
+    const marginBottom = isPortrait ? '3vw' : '3vh';
+    const fontSizeLarge = isPortrait ? '3vw' : '3vh';
+    const fontSizeMedium = isPortrait ? '2vw' : '2vh';
+    const padding = isPortrait ? '3vw' : '3vh';
 
     const css = `
-        .container{
+        .container {
             width: ${isPortrait ? '100vw' : '100vh'};
             height: ${isPortrait ? '100vw' : '100vh'};
         }
 
-        .game-container {
-            border: #DC2FDD dashed ${isPortrait ? '0.5vw' : '0.5vh'};
+        .game-container,
+        .menu-bar,
+        .instructions {
+            border: #DC2FDD dashed ${borderWidth};
         }
 
         .bricks-container {
-            margin: ${isPortrait ? '0.5vw' : '0.5vh'};
-            
+            margin: ${borderWidth};
         }
 
         .paddle {
             width: ${paddleWidth};
             height: ${paddleHeight};
         }
-    
+
         .ball {
             width: ${ballSize};
             height: ${ballSize};
         }
-    
-        .menu-bar h1 {
-            font-size: ${isPortrait ? '5vh' : '3vh'};
+
+        .menu-bar h1,
+        .menu-bar p,
+        .instructions h1 {
+            font-size: ${fontSizeLarge};
         }
-    
-        .menu-bar div, .menu-bar button, .menu-bar a {
-            font-size: ${isPortrait ? '3vh' : '2vh'};
+
+        .menu-bar div,
+        .menu-bar button,
+        .menu-bar a,
+        .header,
+        .instructions p {
+            font-size: ${fontSizeMedium};
         }
 
         .text {
-            font-size: ${isPortrait ? "3vw" : "3vh"};
+            font-size: ${fontSizeLarge};
         }
 
         .menu-bar {
-            Padding: ${isPortrait ? "3vw" : "3vh"};
-            border: #DC2FDD dashed ${isPortrait ? '0.5vw' : '0.5vh'};
-        }
-           
-        .menu-button {
-            font-size: ${isPortrait ? "2vw" : "2vh"};
+            padding: ${padding};
         }
 
         .menu-button {
-            font-size: ${isPortrait ? "2vw" : "2vh"};
+            font-size: ${fontSizeMedium};
         }
-        
-        .menu-bar h1, .menu-bar p{
-            font-size: ${isPortrait ? "3vw" : "3vh"};
-            margin-bottom: ${isPortrait ? "3vw" : "3vh"};
+
+        .menu-bar h1, .menu-bar p {
+            margin-bottom: ${marginBottom};
         }
 
         .header {
-            padding: 0 ${isPortrait ? "0.5vw" : "0.5vh"};
-            font-size: ${isPortrait ? "2vw" : "2vh"};
+            padding: 0 ${borderWidth};
         }
 
-            
+        .instructions {
+            padding: ${borderWidth};
+        }
     `;
 
     const styleElement = document.createElement('style');

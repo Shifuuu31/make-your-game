@@ -155,22 +155,18 @@ body ::before {
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 1vh;
     transform: translate(-50%, -50%);
     background: black;
     text-align: center;
     z-index: 3;
-    border: #DC2FDD dashed 0.5vh;
 }
 
 .instructions h1 {
     color: #DC2FDD;
-    font-size: 3vh;
     font-weight: bold;
 }
 
 .instructions p {
     color: #888888;
-    font-size: 2vh;
     font-weight: bold;
 }
