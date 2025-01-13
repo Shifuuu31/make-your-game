@@ -10,7 +10,7 @@ const keyboardListener = (game) => {
         const overlayHiddenStop = overlay.classList.contains("hiddenStop");
         const gameResultHiddenStop = gameResult.classList.contains("hiddenStop");
         const menuBarHidden = menuBar.classList.contains("hiddenStop");
-        event.preventDefault();
+        // event.preventDefault();
         if ((event.code === 'ArrowLeft' || event.code === 'ArrowRight')) {
             if (overlayHiddenStop) {
                 game.paddle.keyDownHandler(event);
