@@ -4,7 +4,7 @@ import { dimensions } from "/src/js/models/dimensions.js";
 import { Paddle } from "/src/js/models/paddle.js";
 import { levels } from "/src/js/core/levels.js";
 
-export class Game {
+export class Game  {
     constructor(isPortrait) {
         this.chrono = 0;
         this.lastTime = 0;
@@ -105,18 +105,21 @@ export class Game {
             const normalizedHitOffset = hitOffset / (paddleDimensions.width / 2);
 
             const hypotenuse = Math.sqrt(ball.vectx * ball.vectx + ball.vecty * ball.vecty);
-            const maxBounceAngle = Math.PI / 3;
+            const maxAngle = Math.PI / 3;
 
-            const bounceAngle = normalizedHitOffset * maxBounceAngle;
-
-            if (bounceAngle == 0) {
-                const variation = (Math.random() - 0.5) * 0.2;
-                ball.vectx += Math.random() < 0.5 ? -variation : variation;
-            }
+            const bounceAngle = normalizedHitOffset * maxAngle;
+            console.log(bounceAngle);
+                
+           
 
 
             ball.vectx = hypotenuse * Math.sin(bounceAngle);
             ball.vecty = -ball.vecty;
+            if (bounceAngle == 0) {
+                console.log("here");
+                const variation = Math.random()-0.7;
+                ball.vectx +=  variation;
+            }
         }
         ball.move();
 

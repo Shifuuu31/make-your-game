@@ -11,6 +11,7 @@ const keyboardListener = (game) => {
         const overlayShown = overlay.classList.contains("shown");
         const overlayHiddenStop = overlay.classList.contains("hiddenStop");
         const gameResultHiddenStop = gameResult.classList.contains("hiddenStop");
+        const menuBarHidden = menuBar.classList.contains("hiddenStop");
         event.preventDefault();
         if ((event.code === 'ArrowLeft' || event.code === 'ArrowRight')) {
             if (overlayHiddenStop) {
@@ -20,7 +21,7 @@ const keyboardListener = (game) => {
                 }
             }
         } else if (event.code === 'Space' && game.isPaused && game.started) {
-            if (overlayShown && gameResultHiddenStop) {
+            if (overlayShown && !menuBarHidden) {
                 overlay.classList.replace("shown", "hiddenStop");
                 menuBar.classList.replace("shown", "hiddenStop");
                 game.ball.reset(game.paddle.dimensions);
