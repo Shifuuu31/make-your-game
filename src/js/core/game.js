@@ -12,7 +12,6 @@ export class Game {
         this.isPaused = false;
         this.bricksLive = [];
         this.currentLevel = 0;
-        this.topLevel = 0;
         this.player = null;
         this.time = document.querySelector('.time');
         this.container = document.querySelector('.container');
@@ -112,7 +111,7 @@ export class Game {
 
             if (bounceAngle == 0) {
                 const variation = (Math.random() - 0.5) * 0.2;
-                ball.vectx += variation;
+                ball.vectx += Math.random() < 0.5 ? -variation : variation;
             }
 
 
@@ -168,16 +167,16 @@ export class Game {
         let topLevel = dashbord.querySelector('.game-result-top-level');
         resultMessageElem.textContent = resultMessage;
         level.textContent = `${this.currentLevel+1}`;
-        topLevel.textContent = `${this.topLevel+1}`;
+        topLevel.textContent = `${this.player.topLevel+1}`;
         score.textContent = `${this.player.score}`;
-        gameTime.textContent = `${Math.floor(this.chrono / 60)}:${(this.chrono % 60).toString().padStart(2, '0')}`;
+        gameTime.textContent = `${Math.floor(this.chrono / 60).toString().padStart(2, '0')}:${(this.chrono % 60).toString().padStart(2, '0')}`;
         dashbord.classList.replace('hiddenStop', 'shown');
         this.overlay.classList.replace('hiddenStop', 'shown');
     }
 
     updateHeader() {
         this.livesContainer.textContent = "💙".repeat(this.player.lives)
-        this.time.textContent = `TIME: ${Math.floor(this.chrono / 60)}:${(this.chrono % 60).toString().padStart(2, '0')}`;
+        this.time.textContent = `TIME: ${Math.floor(this.chrono / 60).toString().padStart(2, '0')}:${(this.chrono % 60).toString().padStart(2, '0')}`;
         this.score.textContent = `SCORE: ${this.player.score}`;
         this.level.textContent = `LEVEL: ${this.currentLevel+1}`;
 

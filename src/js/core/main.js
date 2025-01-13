@@ -8,7 +8,6 @@ export function main() {
     adjustStyles();
     const player = new Player();
     const game = new Game();
-    player.game = game;
     game.player = player;
     start(game);
     keyboardListener(game);
@@ -27,7 +26,7 @@ export function updateGameState(game) {
         game.updateHeader();
         game.updateChrono(Date.now());
     } else if (game.isWin()) {
-        game.topLevel = game.currentLevel >= game.topLevel ? game.currentLevel : game.topLevel;
+        game.player.topLevel = game.currentLevel > game.player.topLevel ? game.currentLevel : game.player.topLevel;
         game.isPaused = true;
         if (game.currentLevel === levels.length - 1) {
             game.gameResult("YOU WIN!"); 

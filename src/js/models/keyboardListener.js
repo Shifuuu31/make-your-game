@@ -8,7 +8,7 @@ const keyboardListener = (game) => {
         const overlayShown = overlay.classList.contains("shown");
         const overlayHiddenStop = overlay.classList.contains("hiddenStop");
         const gameResultHiddenStop = gameResult.classList.contains("hiddenStop");
-
+        // event.preventDefault();
         if ((event.code === 'ArrowLeft' || event.code === 'ArrowRight')) {
             if (overlayHiddenStop) {
                 game.paddle.keyDownHandler(event);
@@ -16,7 +16,7 @@ const keyboardListener = (game) => {
                     game.ball.reset(game.paddle.dimensions);
                 }
             }
-        } else if (event.code === 'Space' && game.isPaused) {
+        } else if (event.code === 'Space' && game.isPaused && game.started) {
             if (overlayShown && gameResultHiddenStop) {
                 overlay.classList.replace("shown", "hiddenStop");
                 menuBar.classList.replace("shown", "hiddenStop");
@@ -24,15 +24,19 @@ const keyboardListener = (game) => {
             } else {
                 game.isPaused = false;
             }
-        } else if (event.key === 'Escape' && gameResultHiddenStop) {
+        } else if (event.key === 'Escape' && gameResultHiddenStop && game.started) {
             game.isPaused = true;
             overlay.classList.replace("hiddenStop", "shown");
             menuBar.classList.replace("hiddenStop", "shown");
-        } else if ((event.key === 'r' || event.key === 'R') && overlayShown) {
+        } else if ((event.key === 'r' || event.key === 'R') && overlayShown && game.started) {
             overlay.classList.replace("shown", "hiddenStop");
             gameResult.classList.replace("shown", "hiddenStop");
             menuBar.classList.replace("shown", "hiddenStop");
             start(game);
+        } else if ((event.key === 'p' || event.key === 'P') && !game.started) {
+            game.started = true;
+            overlay.classList.replace("shown", "hiddenStop");
+            document.querySelector('.instructions').remove();
         }
     });
 }
