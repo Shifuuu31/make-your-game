@@ -1,7 +1,7 @@
 # make-your-game
 
 # Description
-  make-your-game is a project from 01Talent ciriculum that allows you to create a game from your choice using HTML, CSS and JavaScript.
+  [make-your-game](https://github.com/01-edu/public/tree/master/subjects/make-your-game) is a project from 01Talent ciriculum that allows you to create a game from your choice using HTML, CSS and JavaScript.
   we choose to create arkanoid game.
 
   ![game screenshot](/src/assets/images/image.png)
