@@ -37,8 +37,8 @@ export class Game {
 
     setupbricks() {
         const board = levels[this.currentLevel];
-        this.bricksLive = board.flatMap((row, i) =>
-            row.map((brickType, j) => {
+        for (let row of board) {
+            for (let brickType of row) {
                 if (brickType === 0) {
                     const brick = new Brick();
                     const brickelem = brick.renderBrick();
@@ -46,16 +46,16 @@ export class Game {
                     this.bricksContainer.appendChild(brickelem);
                     brick.dimension = new dimensions(brickelem);
                     brickelem.classList.add('hidden');
-                    return null
+                    continue;
                 };
                 const brick = new Brick();
                 const brickelem = brick.renderBrick();
                 brick.type = brickType;
                 this.bricksContainer.appendChild(brickelem);
                 brick.dimension = new dimensions(brickelem);
-                return brick;
-            }).filter(brick => brick !== null)
-        );
+                this.bricksLive.push(brick);
+            }
+        }
     }
 
     collisionswithcontainer() {
@@ -166,8 +166,8 @@ export class Game {
         let level = dashbord.querySelector('.game-result-level');
         let topLevel = dashbord.querySelector('.game-result-top-level');
         resultMessageElem.textContent = resultMessage;
-        level.textContent = `${this.currentLevel+1}`;
-        topLevel.textContent = `${this.player.topLevel+1}`;
+        level.textContent = `${this.currentLevel + 1}`;
+        topLevel.textContent = `${this.player.topLevel + 1}`;
         score.textContent = `${this.player.score}`;
         gameTime.textContent = `${Math.floor(this.chrono / 60).toString().padStart(2, '0')}:${(this.chrono % 60).toString().padStart(2, '0')}`;
         dashbord.classList.replace('hiddenStop', 'shown');
@@ -178,7 +178,7 @@ export class Game {
         this.livesContainer.textContent = "💙".repeat(this.player.lives)
         this.time.textContent = `TIME: ${Math.floor(this.chrono / 60).toString().padStart(2, '0')}:${(this.chrono % 60).toString().padStart(2, '0')}`;
         this.score.textContent = `SCORE: ${this.player.score}`;
-        this.level.textContent = `LEVEL: ${this.currentLevel+1}`;
+        this.level.textContent = `LEVEL: ${this.currentLevel + 1}`;
 
     }
 
@@ -186,7 +186,7 @@ export class Game {
         return this.bricksLive.length === 0;
     }
 
-   
+
 
     updateChrono(currentTime) {
         if (!this.lastTime) {
@@ -204,7 +204,7 @@ export class Game {
 
         this.lastTime = currentTime;
     }
-    
+
     stopChrono() {
         this.lastTime = null;
         this.timeAccumulator = 0;

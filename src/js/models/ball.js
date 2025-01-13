@@ -57,8 +57,6 @@ export class Ball {
         this.elem.style.top = `${this.dimensions.y}px`;
         this.vectx = 0;
         this.dimensions.update({
-            x: this.dimensions.x,
-            y: this.dimensions.y,
             left: this.dimensions.x,
             top: this.dimensions.y,
             right: this.dimensions.x + this.dimensions.width,
