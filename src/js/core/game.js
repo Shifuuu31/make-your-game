@@ -108,7 +108,6 @@ export class Game  {
             const maxAngle = Math.PI / 3;
 
             const bounceAngle = normalizedHitOffset * maxAngle;
-            console.log(bounceAngle);
                 
            
 
@@ -116,7 +115,6 @@ export class Game  {
             ball.vectx = hypotenuse * Math.sin(bounceAngle);
             ball.vecty = -ball.vecty;
             if (bounceAngle == 0) {
-                console.log("here");
                 const variation = Math.random()-0.7;
                 ball.vectx +=  variation;
             }
