@@ -6,6 +6,7 @@ export class Ball {
         this.vectx = 0;
         this.vecty = isPortrait ? -window.innerWidth * 0.004 : -window.innerHeight * 0.004;
         this.dimensions = null;
+        this.initialDimensions = null;
     }
 
     renderBall(paddleDimensions, container) {
@@ -14,22 +15,27 @@ export class Ball {
         container.append(ball);
         this.vectx = 0;
         this.dimensions = new dimensions(ball);
+        this.initialDimensions = {
+            x: this.dimensions.x,
+            y: this.dimensions.y,
+            width: this.dimensions.width,
+            height: this.dimensions.height,
+            top: this.dimensions.top,
+            right: this.dimensions.right,
+            bottom: this.dimensions.bottom,
+            left: this.dimensions.left,
+        };
 
-        const newx = paddleDimensions.right - (paddleDimensions.width / 2) - (this.dimensions.width / 2);
-        const newy = paddleDimensions.top - this.dimensions.height - 2;
-
+        this.dimensions.x = paddleDimensions.right - (paddleDimensions.width / 2) - (this.dimensions.width / 2);
+        this.dimensions.y = paddleDimensions.top - this.dimensions.height - 2;
         this.dimensions.update({
-            x: newx,
-            y: newy,
-            top: newy,
-            left: newx,
-            right: newx + this.dimensions.width,
-            bottom: newy + this.dimensions.height,
+            top: this.dimensions.y,
+            left: this.dimensions.x,
+            right: this.dimensions.x + this.dimensions.width,
+            bottom: this.dimensions.y + this.dimensions.height,
         });
 
-        ball.style.left = `${newx}px`;
-        ball.style.top = `${newy}px`;
-
+        ball.style.transform = `translate(${this.dimensions.x - this.initialDimensions.x}px, ${this.dimensions.y - this.initialDimensions.y}px)`;
         this.elem = ball;
     }
 
@@ -42,16 +48,14 @@ export class Ball {
             right: this.dimensions.x + this.vectx + this.dimensions.width,
             bottom: this.dimensions.y + this.vecty + this.dimensions.height,
         });
-        this.elem.style.left = `${this.dimensions.x}px`;
-        this.elem.style.top = `${this.dimensions.y}px`;
+        this.elem.style.transform = `translate(${this.dimensions.x - this.initialDimensions.x}px, ${this.dimensions.y - this.initialDimensions.y}px)`
     }
 
     reset(paddle) {
         this.dimensions.x = paddle.right - (paddle.width / 2) - (this.dimensions.width / 2);
         this.dimensions.y = paddle.top - this.dimensions.height - 2;
 
-        this.elem.style.left = `${this.dimensions.x}px`;
-        this.elem.style.top = `${this.dimensions.y}px`;
+        this.elem.style.transform = `translate(${this.dimensions.x - this.initialDimensions.x}px, ${this.dimensions.y - this.initialDimensions.y}px)`
         this.vectx = 0;
         this.dimensions.update({
             left: this.dimensions.x,
