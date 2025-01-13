@@ -1,8 +1,8 @@
-import { Ball } from "../models/ball.js";
-import { Brick } from "../models/brick.js";
-import { dimensions } from "../models/dimensions.js";
-import { Paddle } from "../models/paddle.js";
-import { levels } from "./levels.js";
+import { Ball } from "/src/js/models/ball.js";
+import { Brick } from "/src/js/models/brick.js";
+import { dimensions } from "/src/js/models/dimensions.js";
+import { Paddle } from "/src/js/models/paddle.js";
+import { levels } from "/src/js/core/levels.js";
 
 export class Game {
     constructor() {

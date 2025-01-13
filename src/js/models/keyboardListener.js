@@ -1,4 +1,4 @@
-import { start } from "../core/utils.js";
+import { start } from "/src/js/core/utils.js";
 const keyboardListener = (game) => {
     const overlay = document.querySelector('.overlay');
     const menuBar = document.getElementById('pause-dashboard');

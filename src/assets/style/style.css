@@ -49,7 +49,7 @@ body {
 .brick {
     width: 100%;
     height: 100%;
-    background-image: url(/assets/images/brick.png);
+    background-image: url(/src/assets/images/brick.png);
     background-size: cover;
     display: inline-block;
 }
@@ -115,7 +115,7 @@ body ::before {
 
 /* Paddle */
 .paddle {
-    background-image: url(/assets/images/paddle.png);
+    background-image: url(/src/assets/images/paddle.png);
     background-size: cover;
     position: absolute;
     margin: 0;
@@ -125,7 +125,7 @@ body ::before {
 
 /* Ball */
 .ball {
-    background-image: url(/assets/images/ball.png);
+    background-image: url(/src/assets/images/ball.png);
     background-size: cover;
     position: absolute;
     border-radius: 50%;

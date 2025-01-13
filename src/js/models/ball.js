@@ -1,4 +1,4 @@
-import { dimensions } from "./dimensions.js";
+import { dimensions } from "/src/js/models/dimensions.js";
 
 export class Ball {
     constructor() {

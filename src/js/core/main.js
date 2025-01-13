@@ -1,9 +1,8 @@
-import { Player } from "../models/player.js";
-import { Game } from "./game.js";
-import { keyboardListener } from "../models/keyboardListener.js";
-import { start, updateBackgroundColor } from "./utils.js";
-import { adjustStyles } from "./utils.js";
-import { levels } from "./levels.js";
+import { Player } from "/src/js/models/player.js";
+import { Game } from "/src/js/core/game.js";
+import { keyboardListener } from "/src/js/models/keyboardListener.js";
+import { start, updateBackgroundColor, adjustStyles } from "/src/js/core/utils.js";
+import { levels } from "/src/js/core/levels.js";
 
 export function main() {
     adjustStyles();
