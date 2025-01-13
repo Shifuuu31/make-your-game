@@ -3,6 +3,7 @@ import { dimensions } from "/src/js/models/dimensions.js";
 export class Paddle {
     constructor(containerDimensions, container) {
         this.paddle = null;
+        this.moveStep = (window.innerWidth * 40) / 2700;
         this.border = window.innerHeight * 0.005;
         this.dimensions = null;
         this.containerDimensions = containerDimensions;
@@ -13,6 +14,7 @@ export class Paddle {
         const paddle = document.createElement('div');
         paddle.className = "paddle";
         container.append(paddle);
+
 
         this.dimensions = new dimensions(paddle);
         this.paddle = paddle;
@@ -36,10 +38,9 @@ export class Paddle {
 
     moveRight(containerRect) {
         const paddleWidth = this.dimensions.width + this.border;
-        const moveStep = (window.innerWidth * 40) / 2700;
 
         if (this.dimensions.x < containerRect.right - paddleWidth) {
-            this.dimensions.x += moveStep;
+            this.dimensions.x += this.moveStep;
 
             const newX = Math.min(this.dimensions.x, containerRect.right - paddleWidth);
             this.paddle.style.left = `${newX}px`;
@@ -55,10 +56,9 @@ export class Paddle {
 
     moveLeft(containerRect) {
         const paddleWidth = this.dimensions.width + this.border;
-        const moveStep = (window.innerWidth * 40) / 2700;
 
         if (this.dimensions.x > containerRect.left) {
-            this.dimensions.x -= moveStep;
+            this.dimensions.x -= this.moveStep;
 
             const newX = Math.max(this.dimensions.x, containerRect.left + this.border);
             this.paddle.style.left = `${newX}px`;
@@ -80,8 +80,6 @@ export class Paddle {
                 break;
             case "ArrowRight":
                 this.moveRight(this.containerDimensions);
-                break;
-            default:
                 break;
         }
     };

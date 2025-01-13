@@ -4,7 +4,7 @@ export class Ball {
     constructor() {
         this.elem = null;
         this.vectx = 0;
-        this.vecty = -2.5;
+        this.vecty = -(window.innerWidth * 3.5) / 2700;
         this.dimensions = null;
     }
 
